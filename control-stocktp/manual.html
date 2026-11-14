@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Manual de usuario - Control de Stock</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<div class="manual">
+
+    <h1>Manual de usuario</h1>
+    <p>Este manual explica, paso a paso, cómo usar el sistema sin necesitar ayuda de nadie. Si tenés una duda, buscala en el índice.</p>
+    <p><a class="boton" href="index.php">Ir al sistema</a></p>
+
+    <section class="tarjeta">
+        <h2>Índice</h2>
+        <ol class="indice">
+            <li><a class="enlace" href="#que-es">Qué es y cómo está organizado</a></li>
+            <li><a class="enlace" href="#empezar">Cómo empezar</a></li>
+            <li><a class="enlace" href="#produccion">Módulo B: Producción</a></li>
+            <li><a class="enlace" href="#administracion">Módulo A: Administración</a></li>
+            <li><a class="enlace" href="#personal">Módulo C: Personal</a></li>
+            <li><a class="enlace" href="#comercio">Sección Comercio</a></li>
+            <li><a class="enlace" href="#errores">Mensajes de error frecuentes</a></li>
+            <li><a class="enlace" href="#glosario">Glosario</a></li>
+        </ol>
+    </section>
+
+    <section class="tarjeta" id="que-es">
+        <h2>1. Qué es y cómo está organizado</h2>
+        <p>Es un sistema web para controlar un comercio: la mercadería que entra y sale, los costos y ganancias, y los sueldos del personal. Está dividido en <b>tres módulos independientes</b> que comparten la misma información. Los encontrás en el menú de la izquierda:</p>
+        <ul>
+            <li><b>B · Producción (control de stock):</b> artículos, entradas y salidas, y cuánto queda cada día.</li>
+            <li><b>A · Administración:</b> costos, ganancias, valor de la mercadería y decisiones de precio.</li>
+            <li><b>C · Personal:</b> empleados, asistencia, licencias y liquidación de sueldos.</li>
+        </ul>
+        <p>Todo lo que cargues se guarda en la base de datos: no se pierde al cerrar la página.</p>
+    </section>
+
+    <section class="tarjeta" id="empezar">
+        <h2>2. Cómo empezar</h2>
+        <ol>
+            <li>Abrí la dirección del sistema en el navegador. Vas a ver el <b>Panel</b>.</li>
+            <li>En <b>Comercio</b> escribí el nombre y la descripción de tu negocio.</li>
+            <li>En <b>Artículos</b> cargá los productos (una sola vez cada uno).</li>
+            <li>Cada día registrá las <b>entradas</b> y <b>salidas</b> en Movimientos.</li>
+            <li>Mirá los resultados en el Panel, en Control diario y en Resumen del día.</li>
+        </ol>
+        <p>Las fechas se muestran como día/mes/año. Los importes se escriben con números, por ejemplo <code>1500</code> o <code>1500,50</code>.</p>
+    </section>
+
+    <section class="tarjeta" id="produccion">
+        <h2>3. Módulo B: Producción (control de stock)</h2>
+
+        <h3>Panel</h3>
+        <p>Es la pantalla de inicio. Muestra cuántos artículos hay, las unidades en existencia, lo que entró y salió hoy y cuántos artículos tienen stock bajo. También tiene un gráfico de los últimos 7 días y los últimos movimientos.</p>
+
+        <h3>Artículos</h3>
+        <ol>
+            <li>Completá <b>código</b> (ya viene sugerido), <b>nombre</b> y <b>categoría</b>.</li>
+            <li><b>Stock inicial:</b> cuántas unidades tenés al empezar. <b>Stock mínimo:</b> cuando la existencia llega a ese número, el artículo aparece con el aviso "Stock bajo".</li>
+            <li>Opcional pero recomendado: <b>costo de compra</b>, <b>precio de venta</b> y <b>precio de la competencia</b>. Las usa el módulo Administración.</li>
+            <li>Tocá <b>Guardar artículo</b>.</li>
+        </ol>
+        <p>Para corregir un artículo tocá <b>Editar</b> en la lista. Para buscar, escribí parte del código o nombre y tocá <b>Filtrar</b>. Si eliminás un artículo también se borran sus movimientos.</p>
+
+        <h3>Movimientos</h3>
+        <ol>
+            <li>Elegí la <b>fecha</b> (no puede ser futura).</li>
+            <li>Elegí el <b>artículo</b>.</li>
+            <li>Marcá <b>Entrada</b> si llegó mercadería, o <b>Salida</b> si se vendió, rompió o descartó.</li>
+            <li>Escribí la <b>cantidad</b> y, si querés, una nota. Tocá <b>Registrar movimiento</b>.</li>
+        </ol>
+        <p>El sistema <b>no permite</b> una salida mayor a lo que hay: la existencia nunca queda negativa. Si te equivocaste, eliminá el movimiento en el historial y cargalo de nuevo.</p>
+
+        <h3>Control diario</h3>
+        <p>Es la tabla de un artículo día por día: <b>entrada</b> (ingreso), <b>salida</b> (egreso) y <b>existencia</b> al cierre. Elegí el artículo y el período (por defecto, los últimos 7 días) y tocá <b>Ver control</b>.</p>
+
+        <h3>Resumen del día</h3>
+        <p>Muestra todos los artículos en un día: existencia anterior, entrada, salida y existencia final. Podés cambiar el día, buscar un artículo o marcar "Solo con movimientos".</p>
+
+        <p class="formula">Existencia del día = existencia anterior + entrada - salida</p>
+    </section>
+
+    <section class="tarjeta" id="administracion">
+        <h2>4. Módulo A: Administración</h2>
+        <p>Da información para decidir. Entrá a <b>Costos y ganancias</b> y elegí el mes.</p>
+
+        <h3>Costos</h3>
+        <ol>
+            <li>En <b>Cargar un gasto</b> escribí el concepto (alquiler, luz, insumos...), indicá si es <b>fijo</b> o <b>variable</b> y el monto. Tocá <b>Guardar gasto</b>.</li>
+            <li>La tabla de costos suma automáticamente la <b>mano de obra</b> con los sueldos básicos del módulo Personal.</li>
+        </ol>
+        <ul>
+            <li><b>Costo fijo (CF):</b> se paga igual venda mucho o poco (alquiler, sueldos).</li>
+            <li><b>Costo variable (CV):</b> cambia con la actividad (luz, insumos).</li>
+        </ul>
+        <p class="formula">Costo total = costos fijos + costos variables + mano de obra</p>
+        <p class="formula">Costo unitario = costo total / cantidad de unidades que salieron en el mes</p>
+
+        <h3>Ganancia</h3>
+        <p><b>Ganancia total</b> = ventas - costo de la mercadería vendida - costo total. Las ventas se calculan con las salidas del mes por el precio de venta de cada artículo. <b>Ganancia unitaria</b> = precio de venta - costo unitario total.</p>
+
+        <h3>Valoración de mercadería</h3>
+        <p>Es lo que vale lo que tenés guardado: existencia de hoy por costo de compra. También se muestra a precio de venta.</p>
+
+        <h3>Gestión: precios y ventajas</h3>
+        <p>La tabla de abajo compara cada artículo. Escribí el porcentaje de ganancia que querés y tocá <b>Calcular</b>: el sistema propone un <b>precio sugerido</b> (costo unitario total + ese porcentaje). En <b>Situación</b> ves si:</p>
+        <ul>
+            <li><b>Más barato que la competencia:</b> ventaja competitiva en precio.</li>
+            <li><b>Más caro que la competencia:</b> hay que justificar la diferencia o revisar el precio.</li>
+            <li><b>Vende con pérdida:</b> el precio no cubre el costo unitario total. Conviene subirlo o bajar costos.</li>
+        </ul>
+        <p>Una ventaja competitiva sustentable es la que combina el costo unitario con una ganancia que el negocio puede sostener.</p>
+    </section>
+
+    <section class="tarjeta" id="personal">
+        <h2>5. Módulo C: Personal</h2>
+        <p>Tiene cuatro pestañas arriba de la pantalla.</p>
+
+        <h3>Empleados</h3>
+        <p>Cargá nombre, cargo, <b>sueldo básico</b> y fecha de ingreso. Tocá <b>Guardar empleado</b>.</p>
+
+        <h3>Asistencia (presentismo y productividad)</h3>
+        <ol>
+            <li>Elegí la fecha y el empleado.</li>
+            <li>Marcá si estuvo <b>presente</b>, <b>llegó tarde</b> o estuvo <b>ausente</b>.</li>
+            <li>Escribí las <b>unidades procesadas</b> ese día (ventas atendidas, reposiciones, etc.).</li>
+        </ol>
+        <p>Si cargás de nuevo el mismo empleado y día, se reemplaza el registro anterior.</p>
+
+        <h3>Licencias</h3>
+        <p>Elegí el empleado, el tipo (vacaciones, enfermedad, estudio u otra) y las fechas. Esos días <b>no se descuentan</b> ni cuentan como ausencia.</p>
+
+        <h3>Liquidación de sueldos</h3>
+        <p>Elegí el mes. Para cada empleado verás los días trabajados, ausencias, licencias, productividad (unidades por día trabajado) y el sueldo:</p>
+        <ul>
+            <li><b>Descuento por faltas</b> = sueldo básico / 30 x días ausente.</li>
+            <li><b>Presentismo:</b> un adicional del 8,33% si en el mes no hubo ausencias.</li>
+            <li><b>Retenciones:</b> jubilación 11%, obra social 3%, Ley 19.032 3% y sindicato 2%, calculadas sobre el sueldo del mes.</li>
+        </ul>
+        <p class="formula">Sueldo neto = básico - descuento por faltas + presentismo - retenciones</p>
+    </section>
+
+    <section class="tarjeta" id="comercio">
+        <h2>6. Sección Comercio</h2>
+        <p>Describe el negocio y cómo se ingresan los datos. Tocá <b>Editar</b> para cambiar el nombre, el equipo, la descripción y los pasos de ingreso (un paso por línea).</p>
+    </section>
+
+    <section class="tarjeta" id="errores">
+        <h2>7. Mensajes de error frecuentes</h2>
+        <ul>
+            <li><b>"No hay stock suficiente..."</b>: querés sacar más de lo que hay. Revisá la cantidad o registrá primero la entrada.</li>
+            <li><b>"La fecha no puede ser posterior a hoy"</b>: solo se cargan movimientos hasta el día de hoy.</li>
+            <li><b>"Ya existe un artículo con el código..."</b>: cada código es único. Usá otro.</li>
+            <li><b>"No se puede eliminar..."</b>: borrar esa entrada dejaría una salida posterior sin stock.</li>
+            <li><b>"La sesión venció"</b>: volvé a intentarlo; es una medida de seguridad.</li>
+            <li><b>"No se pudo conectar a la base de datos"</b>: avisá a quien instaló el sistema; hay que revisar <code>config.php</code>.</li>
+        </ul>
+    </section>
+
+    <section class="tarjeta" id="glosario">
+        <h2>8. Glosario</h2>
+        <ul>
+            <li><b>Existencia:</b> unidades que hay al cierre del día.</li>
+            <li><b>Entrada / ingreso:</b> mercadería que llega.</li>
+            <li><b>Salida / egreso:</b> mercadería que se va (venta, rotura, descarte).</li>
+            <li><b>Stock mínimo:</b> cantidad que activa el aviso de reposición.</li>
+            <li><b>Costo fijo / variable:</b> gasto que no cambia / que cambia con la actividad.</li>
+            <li><b>Costo unitario:</b> cuánto cuesta producir o vender una unidad.</li>
+            <li><b>Presentismo:</b> asistencia del empleado, premiada con un adicional.</li>
+            <li><b>Retenciones:</b> descuentos obligatorios sobre el sueldo.</li>
+        </ul>
+    </section>
+
+    <p><a class="boton" href="index.php">Volver al sistema</a></p>
+</div>
+</body>
+</html>
